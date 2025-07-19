@@ -1,32 +1,50 @@
 # 1. UTILIZAR CONCEPTOS FUNDAMENTALES DE PYTHON PARA LA CONSTRUCCIÓN DE PROGRAMAS (VARIABLES/OPERADORES)
 # 2. DISTINGUIR TIPOS DE DATOS Y SENTENCIAS BASICAS DEL LENGUAJE PARA LA CONSTRUCCIÓN DE PROGRAMAS (STRING/INT/FLOAT/BOOLEAN)
-# TIENDA DE REGALOS CON DESCUENTO ESPECIAL POR CUMPLEAÑOS SEGÚN TU EDAD
+# 3. UTILIZAR SENTENCIAS CONDICIONALES PARA EL CONTROL  DE FLUJO DE UN ALGORITMO QUE RESUELVA UN PROBLEMA (IF/ELIF/ELSE)
+# 4. UTILIZAR SENTENCIAS ITERATIVAS PARA LA ELABORACIÓN DE UN ALGORITMO QUE RESUELVA UN PROBLEMA (FOR/WHILE)
 
-print("\n=== ¡Bienvenido a tu Tienda de Regalos favorita+! ===\n")
+# TIENDA DE REGALOS CON DESCUENTO POR CUMPLEAÑOS SEGÚN TU EDAD
 
-# PREGUNTAR SI ES TU CUMPLEAÑOS (RESPUESTA "si" O "no")
-cumple_input = input("¿Es hoy tu cumpleaños? (si/no): ")
+print("\n=== ¡BIENVENIDO A TU TIENDA DE REGALOS FAVORITA+! ===\n")
 
-# CONVERTIR LA RESPUESTA A BOOLEANO (TRUE SI RESPONDE "si", FALSE SI NO)
+# VALIDAMOS RESPUESTA DEL USUARIO PARA SABER SI ES SU CUMPLEAÑOS
+cumple_input = ""
+while cumple_input.lower() not in ["si", "no"]:
+    cumple_input = input("¿ES HOY TU CUMPLEAÑOS? (si/no): ")
+print()  # SALTO DE LÍNEA DESPUÉS DE RESPONDER SI ES CUMPLEAÑOS
+
 es_cumpleaños = cumple_input.lower() == "si"
 
-# PEDIR PRECIO Y EDAD
-precio = float(input("Ingresa el precio total de tu compra: $ "))
-edad = int(input("Ingresa tu edad: "))
+# PEDIMOS PRECIO Y EDAD
+precio = float(input("INGRESA EL PRECIO TOTAL DE TU COMPRA: $ "))
+edad = int(input("INGRESA TU EDAD: "))
+print()  # SALTO DE LÍNEA DESPUÉS DE INGRESAR LA EDAD
 
-# CALCULAR PRECIO FINAL APLICANDO DESCUENTO SOLO SI ES CUMPLEAÑOS (TRUE=1, FALSE=0)
-precio_final = precio - (precio * edad / 100) * es_cumpleaños
+# MOSTRAMOS LOS PASOS DEL PROCESO
+pasos = ["VERIFICANDO EDAD...", "CALCULANDO DESCUENTO...", "GENERANDO TOTAL..."]
+for paso in pasos:
+    print(f"> {paso}")
 
-# MOSTRAR RESULTADOS
-print("\nPor ser un día tan especial, recibes un descuento!")
-print(f"El valor original de tu compra es $ {precio:.0f}")
-print(f"Tu descuento es del {edad * es_cumpleaños}%")
-print(f"Felicidades! El precio final de tu compra es: $ {precio_final:.0f}\n")
+# CALCULAMOS EL DESCUENTO SEGÚN CONDICIONES
+if es_cumpleaños:
+    descuento = precio * edad / 100
+    precio_final = precio - descuento
+    print("\n¡FELICIDADES! POR SER UN DÍA ESPECIAL, RECIBES UN DESCUENTO.")
+    print(f"TU DESCUENTO ES DEL {edad}%")
+elif edad < 18:
+    descuento = precio * 5 / 100
+    precio_final = precio - descuento
+    print("\nPOR SER MENOR DE 18 AÑOS, RECIBES UN DESCUENTO DEL 5%.")
+else:
+    descuento = 0
+    precio_final = precio
+    print("\nNO HAY DESCUENTO APLICABLE, GRACIAS POR TU COMPRA.")
 
+# MOSTRAMOS RESULTADOS FINALES
+print(f"\nVALOR ORIGINAL DE LA COMPRA: $ {precio:.0f}")
+print(f"DESCUENTO APLICADO: $ {descuento:.0f}")
+print(f"PRECIO FINAL: $ {precio_final:.0f}\n")
 
-# 3. UTILIZAR SENTENCIAS CONDICIONALES PARA EL CONTROL  DE FLUJO DE UN ALGORITMO QUE RESUELVA UN PROBLEMA (IF/ELIF/ELSE)
-
-# 4. UTILIZAR SENTENCIAS ITERATIVAS PARA LA ELABORACIÓN DE UN ALGORITMO QUE RESUELVA UN PROBLEMA (FOR/WHILE)
 
 # 5. UTILIZAR ESTRUCTURAS DE DATOS PARA LA RESOLUCIÓN DE PROBLEMAS (LISTAS/TUPLAS/DICCIONARIOS)
 
